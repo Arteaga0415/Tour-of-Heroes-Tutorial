@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   NgIf,
   NgFor,
@@ -24,26 +24,41 @@ import { MessageService } from '../message.service';
   // ],
 })
 
-export class HeroesComponent {
-  // hero: Hero = {
-  //   id: 1,
-  //   name: 'Windstorm'
-  // };
-  selectedHero?: Hero;
+export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
-  
-  constructor(private heroService: HeroService, private messageService: MessageService) {}
+
+  constructor(private heroService: HeroService) { }
+
   ngOnInit(): void {
     this.getHeroes();
   }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-  }
-
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
   }
-  
 }
+
+// export class HeroesComponent {
+//   // hero: Hero = {
+//   //   id: 1,
+//   //   name: 'Windstorm'
+//   // };
+//   selectedHero?: Hero;
+//   heroes: Hero[] = [];
+  
+//   constructor(private heroService: HeroService, private messageService: MessageService) {}
+//   ngOnInit(): void {
+//     this.getHeroes();
+//   }
+
+//   onSelect(hero: Hero): void {
+//     this.selectedHero = hero;
+//     this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+//   }
+
+//   getHeroes(): void {
+//     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+//   }
+  
+// }
