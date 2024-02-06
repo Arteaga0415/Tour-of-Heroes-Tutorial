@@ -27,9 +27,9 @@ export class HeroesComponent {
   //   id: 1,
   //   name: 'Windstorm'
   // };
-  // onSelect(hero: Hero): void {
-  //   this.selectedHero = hero;
-  // }
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
   
   heroes = HEROES;
   selectedHero?: Hero;
